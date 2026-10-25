@@ -1,0 +1,73 @@
+{
+  "name": "projects/18187089592972698893",
+  "projectId": "18187089592972698893",
+  "title": "FRUITIVA — Fruit Processing App",
+  "visibility": "PRIVATE",
+  "createTime": "2026-10-25T06:20:48.245931Z",
+  "updateTime": "2026-10-25T06:37:25.438800Z",
+  "projectType": "PROJECT_DESIGN",
+  "origin": "STITCH",
+  "deviceType": "MOBILE",
+  "designTheme": {
+    "colorMode": "DARK",
+    "font": "MANROPE",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#f4a340",
+    "headlineFont": "MANROPE",
+    "bodyFont": "INTER",
+    "labelFont": "INTER"
+  },
+  "screens": {
+    "home": {
+      "id": "1eb6ed5f3e604c15bffad49dbf200b81",
+      "sourceScreen": "projects/18187089592972698893/screens/1eb6ed5f3e604c15bffad49dbf200b81",
+      "x": 1024,
+      "y": null,
+      "width": 390,
+      "height": 1996,
+      "screenshot": "projects/18187089592972698893/files/e74ab03c6af6439197b5bcde15ec313b",
+      "localImage": "site/public/assets/screen-01-home.png",
+      "imageWidth": 1440,
+      "imageHeight": 6178
+    },
+    "toffee": {
+      "id": "e2875c65586147d98ddc5bee83b2e9fd",
+      "sourceScreen": "projects/18187089592972698893/screens/e2875c65586147d98ddc5bee83b2e9fd",
+      "x": null,
+      "y": 2258,
+      "width": 390,
+      "height": 1864,
+      "screenshot": "projects/18187089592972698893/files/6de5824bf5b24f04843474ae56342cc5",
+      "localImage": "site/public/assets/screen-02-toffee.png",
+      "imageWidth": 1440,
+      "imageHeight": 8768
+    },
+    "process-lab": {
+      "id": "105f10ad74ca47a6b269a671e6786318",
+      "sourceScreen": "projects/18187089592972698893/screens/105f10ad74ca47a6b269a671e6786318",
+      "x": 576,
+      "y": 4385,
+      "width": 390,
+      "height": 2086,
+      "screenshot": "projects/18187089592972698893/files/f901338f168c4aa19e1e3c5b4cde700a",
+      "localImage": "site/public/assets/screen-03-process-lab.png",
+      "imageWidth": 1440,
+      "imageHeight": 7944
+    },
+    "sweets": {
+      "id": "3656d516eafc48bfac262e239911ecd5",
+      "sourceScreen": "projects/18187089592972698893/screens/3656d516eafc48bfac262e239911ecd5",
+      "x": null,
+      "y": null,
+      "width": 390,
+      "height": 2879,
+      "screenshot": "projects/18187089592972698893/files/80340d361bab4a52b8635b24d0835594",
+      "localImage": "site/public/assets/screen-04-sweets.png",
+      "imageWidth": 1440,
+      "imageHeight": 9018
+    }
+  },
+  "metadata": {
+    "userRole": "OWNER"
+  }
+}

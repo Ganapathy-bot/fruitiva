@@ -1,0 +1,26 @@
+name: fruitiva
+description: FRUITIVA fruit processing learning app.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - site/public/assets/mango-toffee.jpg
+    - site/public/assets/fruit-bar-tray.jpg
+    - site/public/assets/aonla-burfi.jpg
+    - site/public/assets/papaya-burfi.jpg
+    - site/public/assets/carrot-burfi.jpg

@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101a16">
+  <meta name="description" content="FRUITIVA — learn practical fruit processing, recipes, and value-added food products.">
+  <link rel="icon" href="data:,">
+  <title>FRUITIVA — From Fresh Fruit to Delicious Products</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101a16;
+      --surface: #142e24;
+      --surface-raised: #174c38;
+      --surface-soft: #1b382d;
+      --orange: #f4a340;
+      --coral: #f07855;
+      --green: #4f8a54;
+      --white: #fff9ef;
+      --muted: #a9b8ae;
+      --line: rgba(169, 184, 174, .15);
+      --radius: 20px;
+      --shadow: 0 14px 36px rgba(0, 0, 0, .22);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: #0b1511;
+      color: var(--white);
+      font: 15px/1.5 Inter, Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    .app {
+      position: relative;
+      width: min(100%, 480px);
+      min-height: 100svh;
+      margin: 0 auto;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 95% 2%, rgba(79, 138, 84, .13), transparent 32rem),
+        var(--bg);
+      box-shadow: 0 0 70px rgba(0, 0, 0, .26);
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: max(18px, env(safe-area-inset-top)) 22px 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--orange);
+      color: #18231c;
+      font-size: 21px;
+      box-shadow: 0 5px 18px rgba(244, 163, 64, .2);
+    }
+    .brand-name { font-size: 18px; font-weight: 850; letter-spacing: .11em; line-height: 1; }
+    .brand-tagline { margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.2; }
+    .top-action {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      cursor: pointer;
+    }
+    main { padding: 0 18px calc(112px + env(safe-area-inset-bottom)); }
+    .screen[hidden] { display: none; }
+    .screen { animation: screen-in .22s ease-out; }
+    @keyframes screen-in { from { opacity: .4; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+    .screen-heading { padding: 8px 4px 18px; }
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 7px; font-size: clamp(25px, 7vw, 33px); line-height: 1.13; letter-spacing: -.045em; }
+    h2 { margin-bottom: 12px; font-size: 19px; line-height: 1.25; letter-spacing: -.025em; }
+    h3 { margin-bottom: 6px; font-size: 15px; }
+    .subtitle { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .section { margin-top: 25px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .section-head h2 { margin: 0; }
+    .text-link { padding: 4px 0; border: 0; background: none; color: var(--orange); font-size: 12px; font-weight: 750; cursor: pointer; }
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(27, 56, 45, .97), rgba(20, 46, 36, .97));
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 248px;
+      align-items: end;
+      margin-top: 2px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 163, 64, .18);
+      border-radius: 26px;
+      background:
+        linear-gradient(0deg, rgba(8, 20, 14, .96) 2%, rgba(8, 20, 14, .58) 48%, rgba(8, 20, 14, .03) 100%),
+        url("https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=88") center 43% / cover,
+        #285638;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy { padding: 22px 20px; }
+    .hero-copy h1 { max-width: 300px; }
+    .hero-copy p { max-width: 330px; margin-bottom: 15px; color: rgba(255, 249, 239, .82); font-size: 13px; }
+    .button-primary, .button-secondary {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 17px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--orange);
+      color: #18231c;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .button-primary:hover, .button-secondary:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(244, 163, 64, .2); }
+    .button-secondary { border: 1px solid var(--line); background: var(--surface); color: var(--white); }
+    .category-list { display: grid; gap: 10px; }
+    .category {
+      display: grid;
+      min-height: 108px;
+      grid-template-columns: 112px 1fr 28px;
+      align-items: center;
+      gap: 13px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .category-photo {
+      width: 112px;
+      height: 88px;
+      border-radius: 13px;
+      background-position: center;
+      background-size: cover;
+    }
+    .category-photo.toffee { background-image: linear-gradient(0deg, rgba(17, 25, 19, .05), rgba(17, 25, 19, .05)), url("./assets/mango-toffee.jpg"); }
+    .category-photo.bars { background-image: url("https://images.unsplash.com/photo-1596591606975-97ee5cef3a1e?auto=format&fit=crop&w=500&q=82"); }
+    .category-photo.sweets { background-image: url("./assets/aonla-burfi.jpg"); }
+    .category-label { margin-bottom: 4px; color: var(--orange); font-size: 10px; font-weight: 850; letter-spacing: .12em; }
+    .category h3 { margin-bottom: 3px; font-size: 15px; }
+    .category p { margin: 0; color: var(--muted); font-size: 11px; }
+    .arrow { color: var(--orange); font-size: 20px; }
+    .process-flow {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 2px 0 8px;
+      scrollbar-width: none;
+    }
+    .process-flow::-webkit-scrollbar, .tabs::-webkit-scrollbar { display: none; }
+    .flow-step {
+      position: relative;
+      flex: 0 0 108px;
+      min-height: 92px;
+      padding: 12px 10px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+    .flow-icon { display: block; margin-bottom: 7px; font-size: 20px; }
+    .flow-step b { display: block; font-size: 11px; }
+    .flow-step small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; line-height: 1.3; }
+    .featured {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+    }
+    .featured-photo {
+      height: 120px;
+      border-radius: 15px;
+      background: url("./assets/mango-toffee.jpg") center / cover, var(--surface-raised);
+    }
+    .featured p { margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+    .featured .button-primary { min-height: 38px; padding: 0 12px; border-radius: 12px; font-size: 11px; }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 0 -18px 16px;
+      overflow-x: auto;
+      padding: 0 18px 7px;
+      scrollbar-width: none;
+    }
+    .tab {
+      flex: 0 0 auto;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .tab[aria-selected="true"] { border-color: rgba(244, 163, 64, .7); background: rgba(244, 163, 64, .14); color: var(--orange); }
+    .recipe-hero {
+      position: relative;
+      display: flex;
+      min-height: 170px;
+      align-items: end;
+      margin-bottom: 13px;
+      background:
+        linear-gradient(0deg, rgba(8, 20, 14, .88), transparent 75%),
+        url("./assets/mango-toffee.jpg") center 58% / cover,
+        var(--surface-raised);
+    }
+    .recipe-hero-copy { padding: 16px; }
+    .recipe-hero-copy h2 { margin: 0; }
+    .recipe-hero-copy p { margin: 0 0 3px; color: var(--orange); font-size: 10px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+    .ingredient-card { padding: 16px; }
+    .ingredient-list { display: grid; gap: 0; margin: 7px 0 0; padding: 0; list-style: none; }
+    .ingredient-list li { display: flex; justify-content: space-between; gap: 15px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .ingredient-list li:last-child { border-bottom: 0; }
+    .ingredient-list strong { flex: 0 0 auto; color: var(--orange); font-variant-numeric: tabular-nums; }
+    .step-list { display: grid; gap: 9px; counter-reset: step; }
+    .step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      align-items: start;
+      gap: 11px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(20, 46, 36, .78);
+    }
+    .step-number {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(244, 163, 64, .13);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .step p { margin: 1px 0 0; color: var(--white); font-size: 12px; }
+    .technical {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 15px;
+      border: 1px solid rgba(244, 163, 64, .35);
+      border-radius: 18px;
+      background: linear-gradient(110deg, rgba(244, 163, 64, .14), rgba(20, 46, 36, .9) 65%);
+    }
+    .technical-icon { font-size: 24px; }
+    .technical p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+    .mini-fruits { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+    .mini-fruit {
+      flex: 1 0 88px;
+      min-height: 88px;
+      padding: 11px 8px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .mini-fruit span { display: block; margin-bottom: 5px; font-size: 22px; }
+    .mini-fruit b { font-size: 11px; }
+    .notice { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+    .production-line {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(76px, 1fr));
+      gap: 7px;
+      overflow-x: auto;
+      padding-bottom: 7px;
+    }
+    .production-stage {
+      min-width: 76px;
+      padding: 10px 7px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .production-stage span { display: block; margin-bottom: 5px; font-size: 22px; }
+    .production-stage b { font-size: 9px; line-height: 1.3; }
+    .lab-photo {
+      min-height: 176px;
+      margin: 14px 0;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background:
+        linear-gradient(0deg, rgba(8, 20, 14, .2), transparent),
+        url("./assets/fruit-bar-tray.jpg") center / cover,
+        var(--surface-raised);
+      box-shadow: var(--shadow);
+    }
+    .parameter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
+    .parameter { padding: 12px; border-radius: 15px; background: rgba(16, 26, 22, .55); }
+    .parameter small { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; }
+    .parameter b { color: var(--orange); font-size: 13px; }
+    .recipe-switch-card { padding: 15px; }
+    .sweet-card { margin-bottom: 12px; }
+    .sweet-photo {
+      height: 145px;
+      background-position: center;
+      background-size: cover;
+    }
+    .sweet-photo.aonla { background-image: url("./assets/aonla-burfi.jpg"); }
+    .sweet-photo.papaya { background-image: url("./assets/papaya-burfi.jpg"); }
+    .sweet-photo.carrot { background-image: url("./assets/carrot-burfi.jpg"); }
+    .sweet-content { padding: 15px; }
+    .sweet-title-row { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+    .sweet-title-row h2 { margin-bottom: 9px; font-size: 17px; }
+    .save-button {
+      display: grid;
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #101a16;
+      cursor: pointer;
+    }
+    .save-button[aria-pressed="true"] { border-color: var(--orange); color: var(--orange); }
+    details { margin-top: 12px; border-top: 1px solid var(--line); }
+    summary {
+      display: flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .process-summary { padding: 0 0 10px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .closing-note { margin: 23px 10px 0; color: var(--muted); font-size: 12px; font-style: italic; text-align: center; }
+    .bottom-nav {
+      position: fixed;
+      z-index: 5;
+      right: max(12px, calc((100vw - 480px) / 2 + 12px));
+      bottom: max(12px, env(safe-area-inset-bottom));
+      left: max(12px, calc((100vw - 480px) / 2 + 12px));
+      display: grid;
+      width: min(calc(100% - 24px), 456px);
+      grid-template-columns: repeat(4, 1fr);
+      margin: 0 auto;
+      padding: 7px;
+      border: 1px solid rgba(169, 184, 174, .18);
+      border-radius: 22px;
+      background: rgba(20, 32, 26, .94);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+      backdrop-filter: blur(18px);
+    }
+    .nav-button {
+      display: grid;
+      min-height: 55px;
+      place-content: center;
+      gap: 3px;
+      border: 0;
+      border-radius: 15px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .nav-icon { font-size: 18px; line-height: 1; }
+    .nav-button[aria-current="page"] { background: rgba(244, 163, 64, .12); color: var(--orange); font-weight: 800; }
+    .toast {
+      position: fixed;
+      z-index: 8;
+      right: 50%;
+      bottom: calc(90px + env(safe-area-inset-bottom));
+      width: max-content;
+      max-width: calc(100vw - 40px);
+      transform: translate(50%, 12px);
+      padding: 11px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #1b382d;
+      color: var(--white);
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .2s ease;
+    }
+    .toast.visible { transform: translate(50%, 0); opacity: 1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+    @media (min-width: 700px) {
+      body { padding: 24px 0; }
+      .app { min-height: calc(100svh - 48px); border: 1px solid rgba(169, 184, 174, .14); border-radius: 30px; }
+      .bottom-nav { bottom: 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand" aria-label="FRUITIVA">
+        <div class="brand-mark" aria-hidden="true">✳</div>
+        <div>
+          <div class="brand-name">FRUITIVA</div>
+          <div class="brand-tagline">From Fresh Fruit to Delicious Products</div>
+        </div>
+      </div>
+      <button class="top-action" type="button" data-action="saved" aria-label="View saved recipes">♡</button>
+    </header>
+
+    <main>
+      <section class="screen" id="home" aria-labelledby="home-title">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Fruit processing, made practical</p>
+            <h1 id="home-title">Turn Fruits into Value</h1>
+            <p>Explore recipes, processing techniques and small-scale food production.</p>
+            <button class="button-primary" type="button" data-go="toffee">Explore recipes <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <section class="section" aria-labelledby="categories-title">
+          <div class="section-head"><h2 id="categories-title">Explore by product</h2></div>
+          <div class="category-list">
+            <button class="category" type="button" data-go="toffee">
+              <span class="category-photo toffee" role="img" aria-label="Artisanal fruit toffees"></span>
+              <span><span class="category-label">TOFFEE</span><h3>Fruit Toffees</h3><p>Explore 5 fruit varieties</p></span>
+              <span class="arrow" aria-hidden="true">›</span>
+            </button>
+            <button class="category" type="button" data-go="lab">
+              <span class="category-photo bars" role="img" aria-label="Fruit bars and dried fruit"></span>
+              <span><span class="category-label">FRUIT BARS</span><h3>Fruit Bars</h3><p>Learn fruit pulp drying</p></span>
+              <span class="arrow" aria-hidden="true">›</span>
+            </button>
+            <button class="category" type="button" data-go="sweets">
+              <span class="category-photo sweets" role="img" aria-label="Traditional Indian sweets"></span>
+              <span><span class="category-label">FRUIT SWEETS</span><h3>Traditional Sweets</h3><p>Discover traditional recipes</p></span>
+              <span class="arrow" aria-hidden="true">›</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="process-title">
+          <div class="section-head"><h2 id="process-title">Learn the Process</h2><button class="text-link" type="button" data-go="lab">Open Process Lab</button></div>
+          <div class="process-flow" aria-label="Fruit processing sequence">
+            <div class="flow-step"><span class="flow-icon" aria-hidden="true">🥭</span><b>Fresh Fruit</b><small>Select & wash</small></div>
+            <div class="flow-step"><span class="flow-icon" aria-hidden="true">🥣</span><b>Pulp Prep</b><small>Peel & pulp</small></div>
+            <div class="flow-step"><span class="flow-icon" aria-hidden="true">♨️</span><b>Cooking</b><small>Mix & cook</small></div>
+            <div class="flow-step"><span class="flow-icon" aria-hidden="true">🍊</span><b>Shape or Dry</b><small>Make the product</small></div>
+            <div class="flow-step"><span class="flow-icon" aria-hidden="true">📦</span><b>Packaging</b><small>Wrap & pack</small></div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="featured-title">
+          <div class="section-head"><h2 id="featured-title">Featured Recipe</h2></div>
+          <article class="card featured">
+            <div class="featured-photo" role="img" aria-label="Golden mango toffees"></div>
+            <div><p class="eyebrow">Sweet & fruity</p><h3>Mango Toffee</h3><p>A step-by-step guide from mango pulp to wrapped toffee.</p><button class="button-primary" type="button" data-go="toffee">View recipe <span aria-hidden="true">→</span></button></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="screen" id="toffee" aria-labelledby="toffee-title" hidden>
+        <div class="screen-heading"><p class="eyebrow">Recipe Studio</p><h1 id="toffee-title">Toffee Recipe Studio</h1><p class="subtitle">Five fruits. Five formulations. One learning experience.</p></div>
+        <div class="tabs" role="tablist" aria-label="Toffee fruit">
+          <button class="tab" role="tab" aria-selected="false" data-toffee="Aonla">Aonla</button>
+          <button class="tab" role="tab" aria-selected="false" data-toffee="Bael">Bael</button>
+          <button class="tab" role="tab" aria-selected="false" data-toffee="Guava">Guava</button>
+          <button class="tab" role="tab" aria-selected="true" data-toffee="Mango">Mango</button>
+          <button class="tab" role="tab" aria-selected="false" data-toffee="Banana">Banana</button>
+          <button class="tab" role="tab" aria-selected="false" data-toffee="Papaya">Papaya</button>
+        </div>
+        <article class="card recipe-hero">
+          <div class="recipe-hero-copy"><p id="toffee-kicker">Selected formulation</p><h2 id="toffee-recipe-title">Mango Toffee</h2></div>
+        </article>
+        <div id="toffee-details">
+          <article class="card ingredient-card">
+            <div class="section-head"><h2>Ingredients</h2><span class="category-label">MANGO</span></div>
+            <ul class="ingredient-list">
+              <li><span>Mango pulp</span><strong>1 kg</strong></li>
+              <li><span>Sugar</span><strong>600 g</strong></li>
+              <li><span>Glucose</span><strong>100 g</strong></li>
+              <li><span>Skimmed milk powder</span><strong>160 g</strong></li>
+              <li><span>Butter or hydrogenated fat</span><strong>100 g</strong></li>
+            </ul>
+          </article>
+          <section class="section">
+            <div class="section-head"><h2>Manufacturing workflow</h2></div>
+            <div class="step-list">
+              <div class="step"><span class="step-number">01</span><p>Wash, peel and pulp ripe mangoes.</p></div>
+              <div class="step"><span class="step-number">02</span><p>Concentrate the pulp to one-third of its original volume.</p></div>
+              <div class="step"><span class="step-number">03</span><p>Add the remaining ingredients and mix thoroughly.</p></div>
+              <div class="step"><span class="step-number">04</span><p>Continue cooking until the desired consistency is reached.</p></div>
+              <div class="step"><span class="step-number">05</span><p>Spread into a 0.5–0.75 cm sheet on a lightly greased surface.</p></div>
+              <div class="step"><span class="step-number">06</span><p>Allow to cool and set.</p></div>
+              <div class="step"><span class="step-number">07</span><p>Cut into individual toffee pieces.</p></div>
+              <div class="step"><span class="step-number">08</span><p>Wrap and pack in airtight containers.</p></div>
+            </div>
+          </section>
+          <div class="section technical"><span class="technical-icon" aria-hidden="true">📏</span><div><h3>Target sheet thickness</h3><p>0.5–0.75 cm</p></div></div>
+          <section class="section">
+            <div class="section-head"><h2>Explore Other Toffees</h2></div>
+            <div class="mini-fruits">
+              <div class="mini-fruit"><span aria-hidden="true">🟢</span><b>Aonla</b></div>
+              <div class="mini-fruit"><span aria-hidden="true">🟤</span><b>Bael</b></div>
+              <div class="mini-fruit"><span aria-hidden="true">🍈</span><b>Guava</b></div>
+              <div class="mini-fruit"><span aria-hidden="true">🍌</span><b>Banana</b></div>
+              <div class="mini-fruit"><span aria-hidden="true">🍈</span><b>Papaya</b></div>
+            </div>
+            <p class="notice">Only the mango formulation and quantities are shown here.</p>
+          </section>
+        </div>
+        <div class="card ingredient-card" id="toffee-unavailable" hidden>
+          <h2 id="toffee-unavailable-title">Formulation not available</h2>
+          <p class="subtitle">This guide does not provide ingredient quantities for this fruit. No formulation has been inferred.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="lab" aria-labelledby="lab-title" hidden>
+        <div class="screen-heading"><p class="eyebrow">Processing Lab</p><h1 id="lab-title">Fruit Bar Processing Lab</h1><p class="subtitle">From fruit pulp to naturally colorful fruit sheets.</p></div>
+        <div class="tabs" role="tablist" aria-label="Fruit bar formulation">
+          <button class="tab" role="tab" aria-selected="true" data-bar="banana">BANANA FRUIT BAR</button>
+          <button class="tab" role="tab" aria-selected="false" data-bar="mango">MANGO FRUIT BAR</button>
+        </div>
+        <section aria-label="Fruit bar production line">
+          <div class="production-line">
+            <div class="production-stage"><span aria-hidden="true">🍌</span><b>Fresh fruit</b></div>
+            <div class="production-stage"><span aria-hidden="true">🥣</span><b>Pulp</b></div>
+            <div class="production-stage"><span aria-hidden="true">🟠</span><b>Spread sheet</b></div>
+            <div class="production-stage"><span aria-hidden="true">▤</span><b>Dried sheet</b></div>
+            <div class="production-stage"><span aria-hidden="true">📦</span><b>Wrapped bars</b></div>
+          </div>
+        </section>
+        <div class="lab-photo" role="img" aria-label="Glossy fruit sheet on a stainless-steel drying tray"></div>
+        <article class="card ingredient-card">
+          <div class="section-head"><h2 id="bar-formula-title">Banana Fruit Bar</h2><span class="category-label">FORMULATION</span></div>
+          <ul class="ingredient-list" id="bar-ingredients">
+            <li><span>Banana pulp</span><strong>1 kg</strong></li>
+            <li><span>Sugar</span><strong>100 g</strong></li>
+            <li><span>Citric acid</span><strong>2 g</strong></li>
+            <li><span>KMS</span><strong>1 g</strong></li>
+          </ul>
+        </article>
+        <section class="section">
+          <div class="section-head"><h2>Banana fruit bar process</h2></div>
+          <div class="step-list">
+            <div class="step"><span class="step-number">01</span><p>Fruit selection and washing.</p></div>
+            <div class="step"><span class="step-number">02</span><p>Peeling and pulping.</p></div>
+            <div class="step"><span class="step-number">03</span><p>Heating at 83 °C for 10 minutes.</p></div>
+            <div class="step"><span class="step-number">04</span><p>Mixing with sugar, citric acid and KMS.</p></div>
+            <div class="step"><span class="step-number">05</span><p>Spreading the pulp uniformly on drying trays.</p></div>
+            <div class="step"><span class="step-number">06</span><p>Drying in a cross-flow dryer at 60 °C until a removable sheet forms.</p></div>
+            <div class="step"><span class="step-number">07</span><p>Cutting the dried sheet into small bars.</p></div>
+            <div class="step"><span class="step-number">08</span><p>Wrapping and packing in pouches.</p></div>
+          </div>
+        </section>
+        <section class="section technical">
+          <span class="technical-icon" aria-hidden="true">🌡️</span>
+          <div><h3>Banana fruit bar</h3><div class="parameter-grid"><div class="parameter"><small>Heating</small><b>83 °C for 10 minutes</b></div><div class="parameter"><small>Drying</small><b>60 °C</b></div></div></div>
+        </section>
+        <article class="section card recipe-switch-card" id="mango-bar-card">
+          <div class="section-head"><h2>Mango fruit bar</h2><span class="category-label">ALSO AVAILABLE</span></div>
+          <ul class="ingredient-list">
+            <li><span>Mango pulp</span><strong>1 kg</strong></li>
+            <li><span>Sugar</span><strong>150 g</strong></li>
+            <li><span>Citric acid</span><strong>1 g</strong></li>
+            <li><span>KMS</span><strong>1 g</strong></li>
+          </ul>
+          <p class="notice">Mango process parameters are not specified in this guide.</p>
+        </article>
+      </section>
+
+      <section class="screen" id="sweets" aria-labelledby="sweets-title" hidden>
+        <div class="screen-heading"><p class="eyebrow">Traditional recipes</p><h1 id="sweets-title">Traditional Sweets Kitchen</h1><p class="subtitle">Fruit-based recipes with a traditional touch.</p></div>
+        <article class="card sweet-card">
+          <div class="sweet-photo aonla" role="img" aria-label="Traditional Indian sweets with seeds"></div>
+          <div class="sweet-content">
+            <div class="sweet-title-row"><div><p class="eyebrow">Recipe 01</p><h2>Aonla Laddu &amp; Burfi</h2></div><button class="save-button" type="button" aria-label="Save Aonla Laddu and Burfi" aria-pressed="false" data-save="Aonla Laddu & Burfi">♡</button></div>
+            <h3>Ingredients</h3>
+            <ul class="ingredient-list">
+              <li><span>Aonla shred</span><strong>1 kg</strong></li><li><span>Sugar</span><strong>1 kg</strong></li><li><span>Water</span><strong>0.5 litre</strong></li><li><span>Melon seeds</span><strong>100 g</strong></li>
+            </ul>
+            <details><summary>Preparation process <span aria-hidden="true">＋</span></summary><div class="process-summary">Wash → Grate → Dry or squeeze lightly → Add to sugar syrup → Cook to the desired consistency → Add melon seeds → Shape into laddus or burfi → Dry lightly in shade → Pack.</div></details>
+          </div>
+        </article>
+        <article class="card sweet-card">
+          <div class="sweet-photo papaya" role="img" aria-label="Papaya and coconut confectionery"></div>
+          <div class="sweet-content">
+            <div class="sweet-title-row"><div><p class="eyebrow">Recipe 02</p><h2>Papaya Burfi</h2></div><button class="save-button" type="button" aria-label="Save Papaya Burfi" aria-pressed="false" data-save="Papaya Burfi">♡</button></div>
+            <h3>Ingredients</h3>
+            <ul class="ingredient-list">
+              <li><span>Papaya</span><strong>1 kg</strong></li><li><span>Sugar</span><strong>750 g</strong></li><li><span>Cardamom powder</span><strong>10 g</strong></li><li><span>Coconut shreds</span><strong>20 g</strong></li>
+            </ul>
+            <details><summary>Preparation process <span aria-hidden="true">＋</span></summary><div class="process-summary">Wash → Peel → Remove seeds → Grate → Add sugar → Cook with stirring → Add cardamom and coconut → Spread on a greased tray → Set → Garnish with coconut → Cut into pieces → Pack.</div></details>
+          </div>
+        </article>
+        <article class="card sweet-card">
+          <div class="sweet-photo carrot" role="img" aria-label="Carrot confectionery with nuts"></div>
+          <div class="sweet-content">
+            <div class="sweet-title-row"><div><p class="eyebrow">Recipe 03</p><h2>Carrot Burfi</h2></div><button class="save-button" type="button" aria-label="Save Carrot Burfi" aria-pressed="false" data-save="Carrot Burfi">♡</button></div>
+            <h3>Ingredients</h3>
+            <ul class="ingredient-list">
+              <li><span>Carrot</span><strong>1 kg</strong></li><li><span>Sugar</span><strong>450 g</strong></li><li><span>Milk</span><strong>0.5 litre</strong></li><li><span>Ghee</span><strong>200 g</strong></li><li><span>Cashew nuts and raisins</span><strong>50 g</strong></li><li><span>Cardamom</span><strong>1 g</strong></li>
+            </ul>
+            <details><summary>Preparation process <span aria-hidden="true">＋</span></summary><div class="process-summary">Scrape → Wash → Grate → Cook with milk until the milk dries → Fry in ghee → Add sugar, dry fruits and cardamom → Spread in a greased tray → Allow to set → Cut into burfi pieces → Pack.</div></details>
+          </div>
+        </article>
+        <p class="closing-note">Traditional recipes. Scientific processing. Value-added products.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-button" type="button" data-go="home" aria-current="page"><span class="nav-icon" aria-hidden="true">⌂</span><span>Home</span></button>
+      <button class="nav-button" type="button" data-go="toffee"><span class="nav-icon" aria-hidden="true">✳</span><span>Recipes</span></button>
+      <button class="nav-button" type="button" data-go="lab"><span class="nav-icon" aria-hidden="true">⚗</span><span>Process Lab</span></button>
+      <button class="nav-button" type="button" data-action="saved"><span class="nav-icon" aria-hidden="true">♡</span><span>Saved</span></button>
+    </nav>
+    <div class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+    (() => {
+      const routeIds = new Set(["home", "toffee", "lab", "sweets"]);
+      const screens = [...document.querySelectorAll(".screen")];
+      const navButtons = [...document.querySelectorAll(".nav-button")];
+      const toast = document.querySelector(".toast");
+      let toastTimer;
+
+      function currentRoute() {
+        const route = location.hash.slice(1);
+        return routeIds.has(route) ? route : "home";
+      }
+
+      function renderRoute() {
+        const route = currentRoute();
+        screens.forEach((screen) => { screen.hidden = screen.id !== route; });
+        navButtons.forEach((button) => {
+          const isCurrent = button.dataset.go === route;
+          if (isCurrent) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        });
+        window.scrollTo(0, 0);
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2400);
+      }
+
+      function getSaved() {
+        try {
+          const value = JSON.parse(localStorage.getItem("fruitiva-saved") || "[]");
+          return Array.isArray(value) ? value.filter((item) => typeof item === "string") : [];
+        } catch (error) {
+          console.error("Could not read saved FRUITIVA recipes.", error);
+          return [];
+        }
+      }
+
+      function setSaved(items) {
+        try {
+          localStorage.setItem("fruitiva-saved", JSON.stringify(items));
+        } catch (error) {
+          console.error("Could not save FRUITIVA recipes.", error);
+          showToast("Could not save recipe on this device.");
+        }
+      }
+
+      function updateSavedButtons() {
+        const saved = getSaved();
+        document.querySelectorAll("[data-save]").forEach((button) => {
+          const isSaved = saved.includes(button.dataset.save);
+          button.setAttribute("aria-pressed", String(isSaved));
+          button.textContent = isSaved ? "♥" : "♡";
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        const goButton = event.target.closest("[data-go]");
+        if (goButton) {
+          location.hash = goButton.dataset.go;
+          return;
+        }
+        const actionButton = event.target.closest('[data-action="saved"]');
+        if (actionButton) {
+          const saved = getSaved();
+          showToast(saved.length ? `Saved recipes: ${saved.join(", ")}` : "No saved recipes yet. Save a sweet recipe with ♡.");
+          return;
+        }
+        const saveButton = event.target.closest("[data-save]");
+        if (saveButton) {
+          const saved = getSaved();
+          const name = saveButton.dataset.save;
+          const next = saved.includes(name) ? saved.filter((item) => item !== name) : [...saved, name];
+          setSaved(next);
+          updateSavedButtons();
+          showToast(next.includes(name) ? `${name} saved.` : `${name} removed from saved.`);
+        }
+      });
+
+      document.querySelectorAll("[data-toffee]").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll("[data-toffee]").forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+          const selected = tab.dataset.toffee;
+          const isMango = selected === "Mango";
+          document.getElementById("toffee-recipe-title").textContent = isMango ? "Mango Toffee" : `${selected} Toffee`;
+          document.getElementById("toffee-kicker").textContent = isMango ? "Selected formulation" : "Fruit variety";
+          document.getElementById("toffee-details").hidden = !isMango;
+          document.getElementById("toffee-unavailable").hidden = isMango;
+          document.getElementById("toffee-unavailable-title").textContent = `${selected} formulation not provided`;
+        });
+      });
+
+      const barFormulations = {
+        banana: {
+          title: "Banana Fruit Bar",
+          ingredients: [["Banana pulp", "1 kg"], ["Sugar", "100 g"], ["Citric acid", "2 g"], ["KMS", "1 g"]]
+        },
+        mango: {
+          title: "Mango Fruit Bar",
+          ingredients: [["Mango pulp", "1 kg"], ["Sugar", "150 g"], ["Citric acid", "1 g"], ["KMS", "1 g"]]
+        }
+      };
+
+      document.querySelectorAll("[data-bar]").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll("[data-bar]").forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+          const formulation = barFormulations[tab.dataset.bar];
+          document.getElementById("bar-formula-title").textContent = formulation.title;
+          document.getElementById("bar-ingredients").innerHTML = formulation.ingredients
+            .map(([name, amount]) => `<li><span>${name}</span><strong>${amount}</strong></li>`)
+            .join("");
+          document.getElementById("mango-bar-card").hidden = tab.dataset.bar === "mango";
+        });
+      });
+
+      window.addEventListener("hashchange", renderRoute);
+      renderRoute();
+      updateSavedButtons();
+    })();
+  </script>
+</body>
+</html>

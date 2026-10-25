@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FRUITIVA: From Fresh Fruit to Delicious Products</title>
+  <meta name="description" content="A guide to FRUITIVA, the fruit-processing learning app: what it teaches, how the screens work, and how Google Stitch and Google Antigravity helped build it.">
+  <meta name="author" content="FRUITIVA">
+  <meta property="og:title" content="FRUITIVA: From Fresh Fruit to Delicious Products">
+  <meta property="og:description" content="A guide to FRUITIVA, the fruit-processing learning app: what it teaches, how the screens work, and how Google Stitch and Google Antigravity helped build it.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --paper: #fff9ef;
+      --ink: #17241c;
+      --muted: #5d6d64;
+      --line: #e4ddd0;
+      --orange: #c47a12;
+      --orange-soft: #f4a340;
+      --forest: #174c38;
+      --deep: #101a16;
+      --link: #0f6b4c;
+      --shadow: 0 18px 50px rgba(16, 26, 22, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(244, 163, 64, 0.16), transparent 28rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    a { color: var(--link); text-underline-offset: 0.16em; }
+    a:hover { color: var(--forest); }
+
+    .wrap {
+      width: min(740px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+
+    .kicker {
+      margin: 0 0 0.8rem;
+      color: var(--orange);
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: Manrope, Inter, sans-serif;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    h1 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(2rem, 5vw, 3.05rem);
+      font-weight: 800;
+    }
+
+    .dek {
+      margin: 0 0 1.6rem;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.5;
+    }
+
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 4vw, 3rem);
+    }
+
+    h2 {
+      margin: 2.3rem 0 0.7rem;
+      font-size: 1.55rem;
+    }
+
+    p { margin: 0.85rem 0; }
+
+    ul, ol { margin: 0.8rem 0 1rem; padding-left: 1.25rem; }
+    li { margin: 0.45rem 0; }
+
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1rem 0 1.2rem;
+    }
+
+    .pair article {
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      box-shadow: none;
+    }
+
+    .pair h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .pair p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    figure.app-photo {
+      margin: 1.6rem auto 0.4rem;
+      text-align: center;
+    }
+
+    figure.app-photo img {
+      width: min(100%, 340px);
+      height: auto;
+      border-radius: 28px;
+      box-shadow: 0 16px 40px rgba(16, 26, 22, 0.18);
+    }
+
+    figcaption {
+      margin-top: 0.7rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .pair { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">FRUITIVA</p>
+    <h1>From Fresh Fruit to Delicious Products</h1>
+    <p class="dek">A guide to the fruit-processing app: what it teaches, how to move through it, and how Google Stitch and Google Antigravity helped bring it to a phone.</p>
+
+    <article>
+      <p>FRUITIVA is a learning app for people who want to turn fresh fruit into something they can wrap, pack, and share. It covers fruit toffee, fruit bars, and traditional sweets such as laddu and burfi. The writing stays practical and careful with measurements, so a home processor, a small food business, or an agricultural science student can follow a method with confidence.</p>
+
+      <p>The look of the app came first, on <a href="https://stitch.withgoogle.com">Google Stitch</a>. The working phone app was then built with <a href="https://antigravity.google">Google Antigravity</a>. Those tools stayed in the background. What a person meets is a small, dark, warm kitchen of recipes.</p>
+
+      <figure class="app-photo">
+        <img src="appphoto.png" alt="FRUITIVA home screen on a phone, showing Turn Fruits into Value, a fruit photograph, and the processing categories.">
+        <figcaption>The FRUITIVA home screen: the promise, a way in, and the path to toffee, fruit bars, and saved recipes.</figcaption>
+      </figure>
+
+      <h2>Who it is for</h2>
+
+      <p>FRUITIVA speaks to learners who want the method, not only the dish. Each screen explains the product, lists what goes into it, and walks through the work in order: wash, pulp, cook, shape or dry, then pack.</p>
+
+      <p>The tone is clear and encouraging. Amounts, sheet thickness, and drying notes stay as they were supplied. Where a time or temperature was never given, the app says so.</p>
+
+      <h2>How the app is organized</h2>
+
+      <p>The home screen opens with the line <em>Turn Fruits into Value</em>, under the promise <em>From Fresh Fruit to Delicious Products</em>. Three cards lead into the collection:</p>
+
+      <ul>
+        <li><strong>Fruit Toffees.</strong> Six fruits: aonla, bael, guava, mango, banana, and papaya.</li>
+        <li><strong>Fruit Bars.</strong> Banana and mango sheets.</li>
+        <li><strong>Traditional Sweets.</strong> Aonla laddu and burfi, papaya burfi, and carrot burfi.</li>
+      </ul>
+
+      <p>Below the cards, <em>Learn the Process</em> shows the same path every product follows: select and wash, peel and pulp, mix and cook, shape or dry, wrap and pack. A featured recipe invites the reader straight into mango toffee.</p>
+
+      <p>A bar along the bottom holds four places:</p>
+
+      <ol>
+        <li><strong>Home</strong>, the front door to every product.</li>
+        <li><strong>Recipes</strong>, the toffee studio.</li>
+        <li><strong>Process Lab</strong>, the fruit-bar kitchen.</li>
+        <li><strong>Saved</strong>, the personal collection.</li>
+      </ol>
+
+      <p>Traditional sweets open from the home card. The bottom bar stays on Home while that kitchen is open, so the four main places remain easy to see.</p>
+
+      <h2>Inside a recipe</h2>
+
+      <p>Every recipe is built the same way, so the app feels familiar from the first fruit to the last.</p>
+
+      <p>A short introduction explains why the product matters. Pulpy-fruit sweets, for example, are presented as nutritious alternatives to ordinary sugar confectionery, with room for cottage and small-scale work.</p>
+
+      <p>Then the recipe itself:</p>
+
+      <ul>
+        <li>The fruit name and a photograph when one belongs to that product.</li>
+        <li>Ingredients with amounts, such as pulp, sugar, glucose, milk powder, and butter or ghee.</li>
+        <li>The method as numbered steps, from washing the fruit through wrapping and storage.</li>
+        <li>A few process notes that matter on the bench: how far to concentrate the pulp, how thick to spread the sheet, how long to let it set, and, when the source gives them, the drying temperature and final moisture.</li>
+      </ul>
+
+      <p>Mango toffee is the featured starting point. Switch fruits with the row of names across the top. Aonla, bael, guava, banana, and papaya each keep their own ingredients and steps. Bael toffee, for instance, is cooked to a firm consistency, spread thinly, and dried before it is packed. Banana toffee is pulped, sieved, cooked down, spread, and dried until the piece is ready to wrap.</p>
+
+      <p>The fruit-bar lab works as a comparison. Choose banana or mango. A simple line above the recipe shows the product moving from fresh fruit to pulp, to a spread sheet, to a dried sheet, to wrapped bars. The other fruit stays visible underneath, so both formulas can be glanced at together.</p>
+
+      <p>The sweets kitchen lists three recipes one after another: aonla laddu and burfi, papaya burfi, and carrot burfi. Each card carries its ingredients and the shaping step, whether that is rolling a laddu, cutting a burfi, or packing the pieces for use or sale.</p>
+
+      <h2>Saving a recipe for later</h2>
+
+      <p>A heart on any toffee, fruit bar, or sweet keeps that recipe. The app confirms the choice with a short note, such as “Mango Toffee saved.” Tap the heart again and the recipe leaves the collection.</p>
+
+      <p>Saved recipes live on their own screen: <em>Your favorite fruit recipes, ready when you are.</em> They remain on the phone after the app is closed. If nothing has been saved yet, the screen says so and offers a way into the sweets kitchen, plus a path back to all six toffees.</p>
+
+      <h2>The feel of the screens</h2>
+
+      <p>FRUITIVA is a dark green app with warm orange highlights, cream-colored writing, and photographs of the food itself: mango toffee, fruit bars on a tray, aonla sweets, papaya burfi, and carrot burfi. Cards are softly rounded. Headings are strong. Ingredient amounts stay large enough to read on a phone.</p>
+
+      <p>The same header appears everywhere: the word FRUITIVA and the line <em>From Fresh Fruit to Delicious Products</em>. Orange marks the button you are on, and the next step you can take.</p>
+
+      <h2>How Stitch and Antigravity were used</h2>
+
+      <div class="pair">
+        <article>
+          <h3>Google Stitch</h3>
+          <p>Designed the phone screens and the look of FRUITIVA before the app was built.</p>
+        </article>
+        <article>
+          <h3>Google Antigravity</h3>
+          <p>Turned those screens and the real recipes into the app on the phone.</p>
+        </article>
+      </div>
+
+      <p>Google Stitch is a design canvas. For FRUITIVA it was used to picture the app before it was built. The brief was simple to say and specific to keep: a calm, appetizing classroom for fruit processing, with real recipes and the same navigation on every screen.</p>
+
+      <p>Stitch produced four phone screens: Home, the Toffee Recipe Studio, the Fruit Bar Processing Lab, and the Traditional Sweets Kitchen. Seeing them together made the product easy to judge. Did the home page explain the idea? Could someone move from a category into a full method? Did every screen still feel like FRUITIVA? Those questions were answered on the canvas, while changes were still easy.</p>
+
+      <p>Two lessons from that design work stayed with the app. Describe the mood and the job of each screen in plain language, so the screens belong together. Treat every measurement as part of the lesson. A nicer-looking number is the wrong number.</p>
+
+      <p>Google Antigravity is a development workspace where an agent can build the app from a clear brief. Here the brief was the screens already designed in Stitch, plus the real recipes. Antigravity turned that material into the Flutter app people install: the four-part navigation, the sweets kitchen opened from Home, and a Saved collection that stays on the phone.</p>
+
+      <p>The useful habit was supervision. The agent could assemble screens, connect the buttons, and store saved recipes. The recipe amounts, the order of the steps, and the path through the app still needed a human check. Open Home, open a toffee, switch fruits, save one, and find it again under Saved.</p>
+
+      <h2>What you can do with it</h2>
+
+      <p>Open FRUITIVA when you want a guided path from fruit to product.</p>
+
+      <p>Start on Home and choose a family. Read the method all the way through. Compare banana and mango bars in the lab. Save the recipes you expect to cook. Come back to them from the heart tab.</p>
+
+      <p>The app is a small classroom: exact recipes, the same steps in the same order, and a place to keep the ones you want nearby.</p>
+    </article>
+
+    <footer>
+      <p>FRUITIVA · fruit processing, made practical.</p>
+    </footer>
+  </div>
+</body>
+</html>

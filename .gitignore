@@ -1,0 +1,50 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+**/doc/api/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Local JDK downloaded for Android builds
+jdk17/
+jdk17_home/
+jdk17.zip
+
+# Secrets and machine-local config
+.mcp.json
+*.env
+local.properties
+android/local.properties
+android/key.properties
+**/*.keystore
+**/*.jks
+
+# Local backups
+*.bak
+*.bak-*
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.log
+*.class
+*.pyc
+.history
+.svn/
+migrate_working_dir/
+
+# Android build artifacts
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/.gradle/
+android/captures/
+android/app/.cxx/
