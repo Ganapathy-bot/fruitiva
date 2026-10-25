@@ -138,6 +138,39 @@
       font-size: 0.9rem;
     }
 
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1.25rem 0 0.2rem;
+    }
+
+    .actions a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0.55rem 1rem;
+      border-radius: 14px;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .actions a.download {
+      background: var(--forest);
+      color: var(--paper);
+    }
+
+    .actions a.repo {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--deep);
+    }
+
+    .actions a:hover { color: var(--deep); }
+    .actions a.download:hover { color: var(--paper); }
+
     footer {
       margin-top: 1.4rem;
       color: var(--muted);
@@ -164,6 +197,12 @@
         <img src="appphoto.png" alt="FRUITIVA home screen on a phone, showing Turn Fruits into Value, a fruit photograph, and the processing categories.">
         <figcaption>The FRUITIVA home screen: the promise, a way in, and the path to toffee, fruit bars, and saved recipes.</figcaption>
       </figure>
+
+      <div class="actions">
+        <a class="download" href="fruitiva.apk" download="fruitiva-1.0.0.apk">Download the Android app (APK)</a>
+        <a class="repo" href="https://github.com/Ganapathy-bot/fruitiva">View on GitHub</a>
+      </div>
+      <p>The Android package is version 1.0.0. Install the APK on your phone, or open the source on GitHub.</p>
 
       <h2>Who it is for</h2>
 

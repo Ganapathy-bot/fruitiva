@@ -10,6 +10,10 @@ The look of the app came first, on Google Stitch. The working phone app was then
 
 *The FRUITIVA home screen: the promise, a way in, and the path to toffee, fruit bars, and saved recipes.*
 
+[Download the Android app (APK)](fruitiva.apk) · [View on GitHub](https://github.com/Ganapathy-bot/fruitiva)
+
+The Android package is version 1.0.0. Install the APK on your phone, or open the source on GitHub.
+
 ## Who it is for
 
 FRUITIVA speaks to learners who want the method, not only the dish. Each screen explains the product, lists what goes into it, and walks through the work in order: wash, pulp, cook, shape or dry, then pack.
